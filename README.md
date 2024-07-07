@@ -1,6 +1,6 @@
 ### Usage
 - Put ADTs in `input` folder.
-- Run tool.
+- Run `WDLGenerator.exe`.
 - Get WDL from `output` folder.
 
 ### Version support
