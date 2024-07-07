@@ -1,5 +1,5 @@
 ### Usage
-- Get latest release from [Releases page](https://github.com/Marlamin/WDLGenerator/releases/tag/0.1).
+- Get latest release from [Releases page](https://github.com/Marlamin/WDLGenerator/releases).
 - Extract somewhere.
 - Put ADTs in the `input` folder.
 - Run `WDLGenerator.exe`.
