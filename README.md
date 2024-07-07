@@ -1,5 +1,7 @@
 ### Usage
-- Put ADTs in `input` folder.
+- Get latest release from [Releases page](https://github.com/Marlamin/WDLGenerator/releases/tag/0.1).
+- Extract somewhere.
+- Put ADTs in the `input` folder.
 - Run `WDLGenerator.exe`.
 - Get WDL from `output` folder.
 
