@@ -4,16 +4,25 @@
     {
         static void Main(string[] args)
         {
-            if (!Directory.Exists("input"))
+            var inputDir = "input";
+
+            if(!string.IsNullOrEmpty(args[0]))
             {
-                Directory.CreateDirectory("input");
+                inputDir = args[0];
+            }
+            else
+            {
+                if (!Directory.Exists("input"))
+                {
+                    Directory.CreateDirectory("input");
+                }
             }
 
             var mapName = "";
 
             var adtDict = new Dictionary<(byte, byte), string>();
 
-            foreach (var file in Directory.GetFiles("input", "*.adt"))
+            foreach (var file in Directory.GetFiles(inputDir, "*.adt"))
             {
                 if (file.EndsWith("_lod.adt") || file.EndsWith("obj0.adt") || file.EndsWith("obj1.adt") || file.EndsWith("tex0.adt"))
                     continue;
@@ -32,6 +41,8 @@
             if(adtDict.Count == 0)
             {
                 Console.WriteLine("No ADTs found in input folder.");
+                Console.WriteLine("Press enter to exit");
+                Console.ReadLine();
                 return;
             }
 
@@ -94,7 +105,7 @@
                     var filename = adt.Value;
 
                     var adtReader = new WoWFormatLib.FileReaders.ADTReader();
-                    adtReader.ReadRootFile(File.OpenRead(Path.Combine("input", filename)), 0);
+                    adtReader.ReadRootFile(File.OpenRead(Path.Combine(inputDir, filename)), 0);
 
                     // Marty, we got to go back and update MOAF!
                     var currentOffset = ms.Position;
@@ -187,6 +198,9 @@
                         Directory.CreateDirectory("output");
 
                 File.WriteAllBytes(Path.Combine("output", mapName + ".wdl"), ms.ToArray());
+
+                Console.WriteLine("Press enter to exit");
+                Console.ReadLine();
             }
         }
 
